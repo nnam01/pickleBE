@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: pickle-BE
+  datasource:
+    url: jdbc:mysql://localhost:3306/pickledb
+    username: root
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
