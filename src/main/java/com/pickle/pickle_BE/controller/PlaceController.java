@@ -2,17 +2,17 @@ package com.pickle.pickle_BE.controller;
 
 import com.pickle.pickle_BE.entity.Place;
 import com.pickle.pickle_BE.service.PlaceService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/places")
+@RequiredArgsConstructor
 public class PlaceController {
 
-    @Autowired
-    private PlaceService placeService;
+    private final PlaceService placeService;
 
     @PostMapping
     public ResponseEntity<Place> createPlace(@RequestBody Place place) {

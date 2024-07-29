@@ -59,6 +59,8 @@ public class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.userId").value(userId))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.email").value(request.getEmail()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(request.getName()));
+        System.out.println("User ID: " + userId);
+        System.out.println("Password: " + request.getPassword());
     }
 
     @Test

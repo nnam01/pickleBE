@@ -1,5 +1,6 @@
 package com.pickle.pickle_BE.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -32,7 +33,7 @@ public class User {
     @Column(name = "register_date", nullable = false)
     private LocalDateTime registerDate;
 
-    // Constructor to create a new user with UUID as String
+    @Builder
     public User(String name, String email, String password, String phoneNumber) {
         this.userId = UUID.randomUUID().toString();
         this.name = name;
@@ -42,3 +43,4 @@ public class User {
         this.registerDate = LocalDateTime.now();
     }
 }
+

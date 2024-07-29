@@ -27,8 +27,20 @@ public class UserRepositoryTest {
     @DisplayName("모든 유저 조회")
     void testFindAllUsers() {
         // Given
-        User user1 = new User("테스트1", "test1@example.com", "password123", "01012345678");
-        User user2 = new User("테스트2", "test2@example.com", "password456", "01087654321");
+        User user1 = User.builder()
+                .name("김길동")
+                .email("Kimkde@example.com")
+                .password("securepassword")
+                .phoneNumber("01004567890")
+                .build();
+
+        User user2 = User.builder()
+                .name("김철수")
+                .email("KIM@email.com")
+                .password("securepassword")
+                .phoneNumber("01001237890")
+                .build();
+
         userRepository.save(user1);
         userRepository.save(user2);
 
@@ -45,7 +57,12 @@ public class UserRepositoryTest {
     @DisplayName("유저 생성 및 검색 성공")
     void testCreateAndFindUser() {
         // Given
-        User user = new User("테스트", "test@example.com", "password123", "01012345678");
+        User user = User.builder()
+                .name("홍길동")
+                .email("HONG@example.com")
+                .password("securepassword")
+                .phoneNumber("01012307890")
+                .build();
 
         // When
         userRepository.save(user);
@@ -53,8 +70,8 @@ public class UserRepositoryTest {
 
         // Then
         assertThat(foundUser).isNotNull();
-        assertThat(foundUser.getName()).isEqualTo("테스트");
-        assertThat(foundUser.getEmail()).isEqualTo("test@example.com");
+        assertThat(foundUser.getName()).isEqualTo("홍길동");
+        assertThat(foundUser.getEmail()).isEqualTo("HONG@example.com");
     }
 
     @Test
@@ -74,7 +91,13 @@ public class UserRepositoryTest {
     @DisplayName("유저 정보 업데이트 성공")
     void testUpdateUser() {
         // Given
-        User user = new User("테스트", "test@example.com", "password123", "01012345678");
+        User user = User.builder()
+                .name("김철수")
+                .email("KIM@email.com")
+                .password("securepassword")
+                .phoneNumber("01041237890")
+                .build();
+
         String userId = user.getUserId();
         userRepository.save(user);
 
@@ -96,7 +119,12 @@ public class UserRepositoryTest {
     @DisplayName("유저 생성 및 등록 날짜 확인")
     void testCreateUserAndRegisterDate() {
         // Given
-        User user = new User("박명수", "myeonsu@naver.com", "1234", "01001230123");
+        User user = User.builder()
+                .name("김철수")
+                .email("KIM@email.com")
+                .password("securepassword")
+                .phoneNumber("01012397890")
+                .build();
 
         // When
         userRepository.save(user);

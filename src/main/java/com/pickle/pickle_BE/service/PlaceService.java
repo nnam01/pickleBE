@@ -2,14 +2,14 @@ package com.pickle.pickle_BE.service;
 
 import com.pickle.pickle_BE.entity.Place;
 import com.pickle.pickle_BE.repository.PlaceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class PlaceService {
 
-    @Autowired
-    private PlaceRepository placeRepository;
+    private final PlaceRepository placeRepository;
 
     // Place 저장
     public Place savePlace(Place place) {
